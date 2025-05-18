@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'assignment_dashboard.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/forest_background.png"),
+            image: AssetImage("assets/tree_background.jpg"),
             fit: BoxFit.cover,
           ),
         ),
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "DOOMLINGS",
               style: TextStyle(
                 fontFamily: "Cinzel",
@@ -25,26 +27,30 @@ class LoginPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
-            CircleAvatar(
+            const SizedBox(height: 20),
+            const CircleAvatar(
               radius: 70,
-              backgroundImage: AssetImage("assets/images/doomling_book.png"),
+              backgroundImage: AssetImage("assets/logo.png"),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             _buildTextField(label: "Username"),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _buildTextField(label: "Password", isPassword: true),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, "/home");
+                // Navigate to second screen when tapped.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AssignmentDashboard()),
+                );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFEFEFCC),
+                backgroundColor: const Color(0xFFEFEFCC),
                 foregroundColor: Colors.black,
-                textStyle: TextStyle(fontSize: 20),
+                textStyle: const TextStyle(fontSize: 20),
               ),
-              child: Text("Enter"),
+              child: const Text("Enter"),
             ),
           ],
         ),
@@ -52,15 +58,15 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField({required String label, bool isPassword = false}) {
+  static Widget _buildTextField({required String label, bool isPassword = false}) {
     return TextField(
       obscureText: isPassword,
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        labelStyle: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         filled: true,
-        fillColor: Color(0xFFEFEFCC),
-        border: OutlineInputBorder(),
+        fillColor: const Color(0xFFEFEFCC),
+        border: const OutlineInputBorder(),
       ),
     );
   }
