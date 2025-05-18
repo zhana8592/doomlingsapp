@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'stat_bar.dart';
-
+import 'collection.dart';
+import 'task.dart';
 
 class AssignmentDashboard extends StatelessWidget {
   const AssignmentDashboard({super.key});
@@ -41,29 +42,50 @@ class AssignmentDashboard extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     for (final assignment in assignments)
-                      _buildAssignmentCard(assignment),
-                    _buildAddMoreCard(),
+                      GestureDetector(
+                        onTap: () {
+                          // TODO: Handle assignment click
+                          debugPrint('Clicked on ${assignment['subject']}');
+                        },
+                        child: _buildAssignmentCard(assignment),
+                      ),
+                    GestureDetector(
+                      onTap: () {
+                        // TODO: Handle add more
+                        debugPrint('Clicked on Add More');
+                        Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Tasks()),
+                );
+                      },
+                      child: _buildAddMoreCard(),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 40),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/avatar.png'),
-                    ),
-                    const SizedBox(width: 16),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('@amypeng', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                        SizedBox(height: 8),
-                        StatBar(label: 'XP', value: 170, max: 300, color: Colors.yellow),
-                        SizedBox(height: 6),
-                        StatBar(label: 'HP', value: 520, max: 600, color: Colors.grey),
-                      ],
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    // TODO: Handle profile picture click
+                    debugPrint('Clicked on Profile Picture');
+                  },
+                  child: Row(
+                    children: [
+                      const CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage('assets/avatar.png'),
+                      ),
+                      const SizedBox(width: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text('@amypeng', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                          SizedBox(height: 8),
+                          StatBar(label: 'XP', value: 170, max: 300, color: Colors.yellow),
+                          SizedBox(height: 6),
+                          StatBar(label: 'HP', value: 520, max: 600, color: Colors.grey),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -98,7 +120,6 @@ class AssignmentDashboard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        
         Text(
           '${assignment['subject']} - ${assignment['date']}',
           style: const TextStyle(fontSize: 14),
@@ -108,26 +129,21 @@ class AssignmentDashboard extends StatelessWidget {
   }
 
   Widget _buildAddMoreCard() {
-    return GestureDetector(
-      onTap: () {
-        // TODO: Add new assignment logic
-      },
-      child: Column(
-        children: [
-          Container(
-            height: 120,
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Center(
-              child: Icon(Icons.add, size: 48, color: Colors.black),
-            ),
+    return Column(
+      children: [
+        Container(
+          height: 120,
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.circular(12),
           ),
-          const SizedBox(height: 10),
-          const Text('Add more'),
-        ],
-      ),
+          child: const Center(
+            child: Icon(Icons.add, size: 48, color: Colors.black),
+          ),
+        ),
+        const SizedBox(height: 10),
+        const Text('Add more'),
+      ],
     );
   }
 }
