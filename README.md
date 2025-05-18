@@ -1,16 +1,37 @@
-# flutter_application_1
+# 🎓 StudyMonster - Hackathon Submission
 
-A new Flutter project.
+A fun and motivational Flutter app that turns school assignments into battles with collectible monsters! Built in under 48 hours for JamHacks!!!!!!!!!
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 📅 Assignment dashboard with due dates
+- 🧠 "Battle" monsters when you complete tasks
+- 🐾 Animated reveal screen for each monster
+- 🌟 XP/HP progress tracking
+- 👤 User avatar and profile
+- 🎨 Custom monster images
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Built With
+
+- Flutter
+- Dart
+- Custom assets (PNG/GIF)
+- Designed for Android/iOS
+
+---
+
+## 📸 Screenshots
+
+![reveal](https://github.com/user-attachments/assets/4d57b2f9-55d2-49d8-b174-70bf0f6daaad)
+
+---
+
+## 🚀 How to Run
+
+```bash
+flutter pub get
+flutter run
